@@ -25,7 +25,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $rglocation -Force
 
 New-AzResourceGroupDeployment `
     -ResourceGroupName $resourceGroupName `
-    -TemplateFile .\templates\commons.json ` 
+    -TemplateFile .\templates\commons.json `
     -TemplateParameterFile .\$resourceGroupName\commons.json
 
 New-AzResourceGroupDeployment `

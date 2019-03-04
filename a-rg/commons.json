@@ -1,0 +1,40 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "westeurope"
+        },
+        "virtualNetworkName": {
+            "value": "a-rg-vnet"
+        },
+        "remoteGroup": {
+            "value": "b-rg"
+        },
+        "remoteVirtualNetworkName": {
+            "value": "b-rg-vnet"
+        },
+        "remoteAddressPrefixes": {
+            "value": ["10.11.0.0/16"]
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "argdiagstorage"
+        },
+        "diagnosticsStorageAccountType": {
+            "value": "Standard_LRS"
+        },
+        "diagnosticsStorageAccountKind": {
+            "value": "Storage"
+        },
+        "addressPrefix": {
+            "value": "10.10.0.0/16"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "subnetPrefix": {
+            "value": "10.10.1.0/24"
+        },
+
+    }
+}

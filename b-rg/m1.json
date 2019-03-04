@@ -1,0 +1,54 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachineName": {
+            "value": "m1"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "username"
+        },
+        "virtualNetworkName": {
+            "value": "b-rg-vnet"
+        },
+        "adminPassword": {
+            "value": "Password123_"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "brgdiagstorage"
+        },
+        "IPaddress": {
+            "value": "10.11.1.11"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "rServicesEnabled": {
+            "value": "false"
+        },
+        "imagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "imageOffer": {
+            "value": "WindowsServer"
+        },
+        "imageSku": {
+            "value": "2016-Datacenter"
+        },
+        "imageVersion": {
+            "value": "latest"
+        },
+        "diskSizeGB": {
+            "value": "128"
+        },
+        "publicIp":  {
+            "value": 1
+        },
+        "subnetPrefix": {
+            "value": ["10.11.0.0/16" , "10.10.0.0/16"]
+        },
+    }
+}

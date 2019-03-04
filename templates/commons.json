@@ -1,0 +1,99 @@
+{
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string"
+        },
+        "virtualNetworkName": {
+            "type": "string"
+        },
+        "remoteGroup": {
+            "type": "string"
+        },
+        "remoteVirtualNetworkName": {
+            "type": "string"
+        },
+        "remoteAddressPrefixes": {
+            "type": "array"
+        },
+        "diagnosticsStorageAccountName": {
+            "type": "string"
+        },
+
+        "diagnosticsStorageAccountType": {
+            "type": "string"
+        },
+        "diagnosticsStorageAccountKind": {
+            "type": "string"
+        },
+        "addressPrefix": {
+            "type": "string"
+        },
+        "subnetName": {
+            "type": "string"
+        },
+        "subnetPrefix": {
+            "type": "string"
+        }
+    },
+    "variables": {
+        "vnetId": "[resourceId(parameters('location'),'Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]",
+        "peerVnetId": "[resourceId(parameters('remoteGroup'),'Microsoft.Network/virtualNetworks', parameters('remoteVirtualNetworkName'))]",
+        "subnetRef": "[concat(variables('vnetId'), '/subnets/', parameters('subnetName'))]",
+        "diagnosticsExtensionName": "Microsoft.Insights.VMDiagnosticsSettings"
+    },
+    "resources": [
+        {
+            "name": "[parameters('diagnosticsStorageAccountName')]",
+            "type": "Microsoft.Storage/storageAccounts",
+            "apiVersion": "2018-07-01",
+            "location": "[parameters('location')]",
+            "properties": {},
+            "kind": "[parameters('diagnosticsStorageAccountKind')]",
+            "sku": {
+                "name": "[parameters('diagnosticsStorageAccountType')]"
+            }
+        },
+        {
+            "name": "[parameters('virtualNetworkName')]",
+            "type": "Microsoft.Network/virtualNetworks",
+            "apiVersion": "2018-08-01",
+            "location": "[parameters('location')]",
+            "properties": {
+                "addressSpace": {
+                    "addressPrefixes": [
+                        "[parameters('addressPrefix')]"
+                    ]
+                },
+                "subnets": [
+                    {
+                        "name": "[parameters('subnetName')]",
+                        "properties": {
+                            "addressPrefix": "[parameters('subnetPrefix')]"
+                        }
+                    }
+                ],
+            },
+            "resources": [
+                {
+                    "name": "ab-peer",
+                    "type": "virtualNetworkPeerings",
+                    "apiVersion": "2018-11-01",
+                    "properties": {
+                        "allowVirtualNetworkAccess": "true",
+                        "allowForwardedTraffic": "false",
+                        "allowGatewayTransit": "false",
+                        "useRemoteGateways": "false",
+                        "remoteVirtualNetwork": {
+                          "id": "[variables('peerVnetId')]"
+                        }
+                    },
+                   "dependsOn": [
+                       "[concat('Microsoft.Network/virtualNetworks/', parameters('virtualNetworkName'))]"
+                   ],
+                },
+            ]
+        }
+    ]
+}

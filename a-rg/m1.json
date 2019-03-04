@@ -1,0 +1,94 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachineName": {
+            "value": "m1"
+        },
+        "virtualMachineSize": {
+            "value": "Standard_D2s_v3"
+        },
+        "adminUsername": {
+            "value": "username"
+        },
+        "virtualNetworkName": {
+            "value": "a-rg-vnet"
+        },
+        "adminPassword": {
+            "value": "Password123_"
+        },
+        "diagnosticsStorageAccountName": {
+            "value": "argdiagstorage"
+        },
+        "IPaddress": {
+            "value": "10.10.1.10"
+        },
+        "subnetName": {
+            "value": "default"
+        },
+        "sqlConnectivityType": {
+            "value": "Private"
+        },
+        "sqlPortNumber": {
+            "value": 1433
+        },
+        "sqlStorageDisksCount": {
+            "value": 1
+        },
+        "sqlStorageWorkloadType": {
+            "value": "GENERAL"
+        },
+        "sqlStorageDisksConfigurationType": {
+            "value": "NEW"
+        },
+        "sqlStorageStartingDeviceId": {
+            "value": 2
+        },
+        "sqlStorageDeploymentToken": {
+            "value": 76502
+        },
+        "sqlAutopatchingDayOfWeek": {
+            "value": "Sunday"
+        },
+        "sqlAutopatchingStartHour": {
+            "value": "2"
+        },
+        "sqlAutopatchingWindowDuration": {
+            "value": "60"
+        },
+        "rServicesEnabled": {
+            "value": "false"
+        },
+        "imagePublisher": {
+            "value":  "MicrosoftSQLServer"
+        },
+        "imageOffer": {
+            "value": "SQL2017-WS2016"
+        },
+        "imageSku": {
+            "value": "SQLDEV"
+        },
+        "imageVersion": {
+            "value": "latest"
+        },
+        "diskSizeGB": {
+            "value": "256"
+        },
+        "sqlServer": {
+            "value": 1
+        },
+        "subnetPrefix": {
+            "value": [
+                "10.11.0.0/16",
+                "10.10.0.0/16"
+            ]
+        },
+        "destinationPortRanges" : {
+            "value": ["88", "9999", "3389", "1433"]
+        },
+        "wanDestinationPortRanges": {
+            "value": ["1"]
+        }
+
+    }
+}

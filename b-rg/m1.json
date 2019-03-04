@@ -14,9 +14,6 @@
         "virtualNetworkName": {
             "value": "b-rg-vnet"
         },
-        "adminPassword": {
-            "value": "Password123_"
-        },
         "diagnosticsStorageAccountName": {
             "value": "brgdiagstorage"
         },

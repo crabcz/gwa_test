@@ -14,9 +14,6 @@
         "virtualNetworkName": {
             "value": "a-rg-vnet"
         },
-        "adminPassword": {
-            "value": "Password123_"
-        },
         "diagnosticsStorageAccountName": {
             "value": "argdiagstorage"
         },
